@@ -1213,7 +1213,7 @@ static int mov_write_stts_tag(AVIOContext *pb, MOVTrack *track)
         stts_entries = track->entry ?
                        av_malloc(track->entry * sizeof(*stts_entries)) : /* worst case */
                        NULL;
-        if (!stts_entries)
+        if (track->entry && !stts_entries)
             return AVERROR(ENOMEM);
         for (i = 0; i < track->entry; i++) {
             int duration = get_cluster_duration(track, i);
