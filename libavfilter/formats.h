@@ -173,6 +173,11 @@ AVFilterFormats *ff_planar_sample_fmts(void);
 AVFilterFormats *ff_merge_formats(AVFilterFormats *a, AVFilterFormats *b);
 
 /**
+ * Return true if the intersection of the formats of a and b is not empty.
+ */
+int ff_mergeable_formats(AVFilterFormats *a, AVFilterFormats *b);
+
+/**
  * Add *ref as a new reference to formats.
  * That is the pointers will point like in the ascii art below:
  *   ________

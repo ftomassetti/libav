@@ -96,6 +96,19 @@ fail:
     return NULL;
 }
 
+int ff_mergeable_formats(AVFilterFormats *a, AVFilterFormats *b)
+{
+    AVFilterFormats* merged_formats = ff_merge_formats(a, b);
+    if (merged_formats) {
+        av_freep(&merged_formats->refs);
+        av_freep(&merged_formats->formats);
+        av_freep(&merged_formats);
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 AVFilterFormats *ff_merge_samplerates(AVFilterFormats *a,
                                       AVFilterFormats *b)
 {
