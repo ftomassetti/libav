@@ -91,13 +91,15 @@ AVFilterFormats *ff_merge_samplerates(AVFilterFormats *a,
                                       AVFilterFormats *b);
 
 /**
- * Verify if a channel samplerates list contains the intersection of
- * the samplerates of a and b. Also, all the references of a, all the
+ * Verify if a channel layouts/samplerates list contains the intersection of
+ * the layouts/samplerates of a and b. Also, all the references of a, all the
  * references of b, and a and b themselves will be deallocated.
  *
  * If a and b do not share any common elements, neither is modified, and false
  * is returned, otherwise true is returned.
  */
+int ff_mergeable_channel_layouts(AVFilterChannelLayouts *a,
+                                 AVFilterChannelLayouts *b);
 int ff_mergeable_samplerates(AVFilterFormats *a, AVFilterFormats *b);
 
 /**

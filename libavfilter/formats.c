@@ -176,6 +176,19 @@ fail:
     return NULL;
 }
 
+int ff_mergeable_channel_layouts(AVFilterChannelLayouts *a,
+                                 AVFilterChannelLayouts *b)
+{
+    AVFilterChannelLayouts *merged_channels = ff_merge_channel_layouts(a, b);
+    if (merged_channels) {
+        av_freep(&merged_channels->refs);
+        av_freep(&merged_channels->channel_layouts);
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 int ff_fmt_is_in(int fmt, const int *fmts)
 {
     const int *p;
