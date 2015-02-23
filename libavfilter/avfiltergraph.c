@@ -370,13 +370,13 @@ static int query_formats(AVFilterGraph *graph, AVClass *log_ctx)
                     !ff_mergeable_formats(outlink->in_formats, outlink->out_formats))
                     ret |= AVERROR(ENOSYS);
                 if (inlink->type == AVMEDIA_TYPE_AUDIO &&
-                    (!ff_merge_samplerates(inlink->in_samplerates,
+                    (!ff_mergeable_samplerates(inlink->in_samplerates,
                                            inlink->out_samplerates) ||
                      !ff_merge_channel_layouts(inlink->in_channel_layouts,
                                                inlink->out_channel_layouts)))
                     ret |= AVERROR(ENOSYS);
                 if (outlink->type == AVMEDIA_TYPE_AUDIO &&
-                    (!ff_merge_samplerates(outlink->in_samplerates,
+                    (!ff_mergeable_samplerates(outlink->in_samplerates,
                                            outlink->out_samplerates) ||
                      !ff_merge_channel_layouts(outlink->in_channel_layouts,
                                                outlink->out_channel_layouts)))

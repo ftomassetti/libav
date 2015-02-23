@@ -136,6 +136,18 @@ fail:
     return NULL;
 }
 
+int ff_mergeable_samplerates(AVFilterFormats *a, AVFilterFormats *b)
+{
+    AVFilterFormats *merged_samplerates = ff_merge_samplerates(a, b);
+    if (merged_samplerates) {
+        av_freep(&merged_samplerates->refs);
+        av_freep(&merged_samplerates->formats);
+        return 1;
+    } else {
+        return 0;
+    }    
+}
+
 AVFilterChannelLayouts *ff_merge_channel_layouts(AVFilterChannelLayouts *a,
                                                  AVFilterChannelLayouts *b)
 {
