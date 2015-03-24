@@ -1580,8 +1580,10 @@ static int video_thread(void *arg)
     AVFilterContext *filt_out = NULL, *filt_in = NULL;
     int last_w = is->video_st->codec->width;
     int last_h = is->video_st->codec->height;
-    if (!graph)
+    if (!graph) {
+        av_frame_free(&frame);
         return AVERROR(ENOMEM);
+    }
 
     if ((ret = configure_video_filters(graph, is, vfilters)) < 0)
         goto the_end;
