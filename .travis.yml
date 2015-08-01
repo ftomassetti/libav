@@ -7,4 +7,4 @@ script:
 notifications:
   webhooks:
     urls:
-      - http://fate.luminem.org:2704/webhook   
+      - http://docks.luminem.org/webhook/webhook   
