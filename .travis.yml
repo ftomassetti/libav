@@ -4,8 +4,8 @@ compiler:
   - gcc
 script:
   - sudo apt-get install yasm
-  - ./configure
-  - make
   - mkdir ~/libav-samples
-  - make fate-rsync SAMPLES=~/libav-samples
-  - make fate
+  - ./configure --samples=~/libav-samples
+  - make -j 8
+  - make fate-rsync
+  - make fate -j 8
