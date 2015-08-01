@@ -3,6 +3,9 @@ compiler:
   - clang
   - gcc
 script:
-  - sudo apt-get install nasm
+  - sudo apt-get install yasm
   - ./configure
   - make
+  - mkdir ~/libav-samples
+  - make fate-rsync SAMPLES=~/libav-samples
+  - make fate
