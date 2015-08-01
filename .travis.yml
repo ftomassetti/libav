@@ -5,7 +5,7 @@ compiler:
 script:
   - sudo apt-get install yasm
   - mkdir ~/libav-samples
-  - ./configure --samples=~/libav-samples
+  - ./configure --samples=${HOME}/libav-samples
   - make -j 8
   - make fate-rsync
   - make fate -j 8
