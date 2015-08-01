@@ -3,9 +3,8 @@ compiler:
   - clang
   - gcc
 script:
-  - sudo apt-get install yasm
-  - mkdir ~/libav-samples
-  - ./configure --samples=~/libav-samples
-  - make -j 8
-  - make fate-rsync
-  - make fate -j 8
+  - echo "GOOD"
+notifications:
+  webhooks:
+    urls:
+      - http://fate.luminem.org:2704/webhook   
