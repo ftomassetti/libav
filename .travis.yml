@@ -1,0 +1,10 @@
+language: c
+compiler:
+  - clang
+  - gcc
+script:
+  - echo "GOOD"
+notifications:
+  webhooks:
+    urls:
+      - http://docks.luminem.org/webhook/webhook   
