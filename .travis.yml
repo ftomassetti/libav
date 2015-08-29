@@ -12,7 +12,7 @@ cache:
   directories:
   - libav-samples
 script:
-  - mkdir libav-samples
+  - mkdir -p libav-samples
   - ./configure --samples=libav-samples
   - make -j 8
   - make fate-rsync
