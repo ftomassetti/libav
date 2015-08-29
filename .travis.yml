@@ -8,9 +8,12 @@ addons:
 compiler:
   - clang
   - gcc
+cache:
+  directories:
+  - libav-samples
 script:
-  - mkdir ~/libav-samples
-  - ./configure --samples=${HOME}/libav-samples
+  - mkdir libav-samples
+  - ./configure --samples=libav-samples
   - make -j 8
   - make fate-rsync
   - make fate -j 8
